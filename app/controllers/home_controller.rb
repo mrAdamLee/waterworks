@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
   end
 
-  def utillity_billing
-    
+  def utility_billing
+
   end
 end
