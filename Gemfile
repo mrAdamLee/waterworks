@@ -27,6 +27,8 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -73,4 +75,5 @@ end
 
 gem "tailwindcss-rails", "~> 2.0"
 
-gem "devise", "~> 4.9"
+gem "devise"
+gem 'ros-apartment', require: 'apartment'
