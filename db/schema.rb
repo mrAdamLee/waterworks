@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_22_001418) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_22_002042) do
+  create_table "invoices", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.decimal "amount"
+    t.text "description"
+    t.date "due_date"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "utility_district_id", null: false
+    t.index ["user_id"], name: "index_invoices_on_user_id"
+    t.index ["utility_district_id"], name: "index_invoices_on_utility_district_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -32,5 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_22_001418) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "invoices", "users"
+  add_foreign_key "invoices", "utility_districts"
   add_foreign_key "users", "utility_districts"
 end
