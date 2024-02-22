@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   enum role: { customer: 0, admin: 1, other_role: 2 }
+  belongs_to :utility_district
   # Automatically assign a default role to new users
   after_initialize :set_default_role, if: :new_record?
 

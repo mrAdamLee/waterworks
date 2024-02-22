@@ -1,0 +1,2 @@
+class UtilityDistrict < ApplicationRecord
+end
