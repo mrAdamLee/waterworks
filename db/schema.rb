@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_22_002042) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_22_002539) do
   create_table "invoices", force: :cascade do |t|
     t.integer "user_id", null: false
     t.decimal "amount"
@@ -22,6 +22,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_22_002042) do
     t.integer "utility_district_id", null: false
     t.index ["user_id"], name: "index_invoices_on_user_id"
     t.index ["utility_district_id"], name: "index_invoices_on_utility_district_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.decimal "amount"
+    t.integer "user_id", null: false
+    t.integer "invoice_id", null: false
+    t.date "payment_date"
+    t.string "payment_method"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_payments_on_invoice_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,5 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_22_002042) do
 
   add_foreign_key "invoices", "users"
   add_foreign_key "invoices", "utility_districts"
+  add_foreign_key "payments", "invoices"
+  add_foreign_key "payments", "users"
   add_foreign_key "users", "utility_districts"
 end
