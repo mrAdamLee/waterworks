@@ -9,6 +9,7 @@ class User < ApplicationRecord
   belongs_to :utility_district
   has_many :invoices
   has_many :payments 
+  has_many :reports
   # Automatically assign a default role to new users
   after_initialize :set_default_role, if: :new_record?
 
