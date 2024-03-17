@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :invoices
   has_many :payments 
   has_many :reports
+  has_many :announcements
   # Automatically assign a default role to new users
   after_initialize :set_default_role, if: :new_record?
 
