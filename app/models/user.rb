@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+  acts_as_tenant :utility_district
   enum role: { customer: 0, admin: 1, other_role: 2 }
   
   belongs_to :utility_district
